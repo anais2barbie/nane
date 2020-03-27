@@ -10,11 +10,20 @@ abstract class AbstractController
     {
         $loader = new \Twig\Loader\FilesystemLoader(dirname(dirname(__DIR__)) . '/templates');
         $this->templateEngine = new \Twig\Environment($loader);
+        $this->flash = new Flashbag();
     }
- 
+    public function flash()
+    {
+        return $this->flash;
+    }
  
     protected function render($view, $vars = [])
     {
         return $this->templateEngine->render($view.'.html.twig', $vars);
+    }
+
+    public function redirectTo($url)
+    {
+        header("Location: /".$url);
     }
 }

@@ -11,7 +11,7 @@ class Router
         return FastRoute\simpleDispatcher($routes);
     }
 
-    function runRoute($dispatcher) {
+    public function runRoute($dispatcher) {
         $uri = $_SERVER['REQUEST_URI'];
         if (false !== $pos = strpos($uri, '?')) {
             $uri = substr($uri, 0, $pos);
